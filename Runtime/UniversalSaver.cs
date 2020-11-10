@@ -4,23 +4,23 @@ using Ludiq;
 using System.IO;
 using System.Collections.Generic;
 
-namespace Lasm.Bolt.UniversalSave
+namespace Lasm.Bolt.UniversalSaver
 {
     /// <summary>
-    /// The underlying type of the Binary Save system. This is the type that will be saved and loaded with all the data you assigned.
+    /// The underlying type of the Universal Save system. This is the type that will be saved and loaded with all the data you assigned.
     /// </summary>
     [Serializable]
-    [RenamedFrom("Lasm.BoltExtensions.IO.BinarySave")]
-    [RenamedFrom("Lasm.BoltExtensions.BinarySave")]
-    [RenamedFrom("Lasm.UAlive.BinarySave")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.UniversalSave")]
+    [RenamedFrom("Lasm.BoltExtensions.UniversalSave")]
+    [RenamedFrom("Lasm.UAlive.UniversalSave")]
     [IncludeInSettings(true)][Inspectable]
-    public sealed class UniversalSaver
+    public sealed class UniversalSave
     {
         /// <summary>
         /// All the save variables.
         /// </summary>
-        [RenamedFrom("Lasm.BoltExtensions.IO.BinarySave.saves")]
-        [RenamedFrom("Lasm.UAlive.BinarySave.saves")]
+        [RenamedFrom("Lasm.BoltExtensions.IO.UniversalSave.saves")]
+        [RenamedFrom("Lasm.UAlive.UniversalSave.saves")]
         [Inspectable][InspectorWide]
         public Dictionary<string, object> variables = new Dictionary<string, object>();
 
@@ -33,13 +33,13 @@ namespace Lasm.Bolt.UniversalSave
         /// Load a binary save from a given path.
         /// </summary>
         /// <param name="path"></param>
-        public static UniversalSaver Load(string path)
+        public static UniversalSave Load(string path)
         {
             if (File.Exists(path))
             {
                 using (var fileStream = new FileStream(path, FileMode.Open))
                 {
-                    return SerializationUtility.DeserializeValue<UniversalSaver>(SerializationUtility.CreateReader(fileStream, new DeserializationContext(), DataFormat.Binary));
+                    return SerializationUtility.DeserializeValue<UniversalSave>(SerializationUtility.CreateReader(fileStream, new DeserializationContext(), DataFormat.Binary));
                 }
             }
 
@@ -49,7 +49,7 @@ namespace Lasm.Bolt.UniversalSave
         /// <summary>
         /// Save a binary save to a file path.
         /// </summary>
-        public static void Save(string path, UniversalSaver binary)
+        public static void Save(string path, UniversalSave binary)
         {
             string filelessPath = string.Empty;
 
@@ -65,7 +65,7 @@ namespace Lasm.Bolt.UniversalSave
 
             using (var fileStream = new FileStream(path, FileMode.Create))
             {
-                SerializationUtility.SerializeValue<UniversalSaver>(binary, SerializationUtility.CreateWriter(fileStream, new SerializationContext(), DataFormat.Binary));
+                SerializationUtility.SerializeValue<UniversalSave>(binary, SerializationUtility.CreateWriter(fileStream, new SerializationContext(), DataFormat.Binary));
             }
         }
 
@@ -79,7 +79,7 @@ namespace Lasm.Bolt.UniversalSave
 
 
         /// <summary>
-        /// Get a variable from this Binary Save.
+        /// Get a variable from this Universal Save.
         /// </summary>
         public object Get(string name)
         {
@@ -87,7 +87,7 @@ namespace Lasm.Bolt.UniversalSave
         }
 
         /// <summary>
-        /// Checks if this Binary Save has a variable.
+        /// Checks if this Universal Save has a variable.
         /// </summary>
         public bool Has(string name)
         {
@@ -95,7 +95,7 @@ namespace Lasm.Bolt.UniversalSave
         }
 
         /// <summary>
-        /// Removes a variable from the Binary Save.
+        /// Removes a variable from the Universal Save.
         /// </summary>
         public void Remove(string name)
         {
@@ -103,7 +103,7 @@ namespace Lasm.Bolt.UniversalSave
         }
 
         /// <summary>
-        /// Sets a value of a Binary Save variable.
+        /// Sets a value of a Universal Save variable.
         /// </summary>
         public void Set(string name, object value)
         {

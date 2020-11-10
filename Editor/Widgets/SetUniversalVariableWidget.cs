@@ -1,7 +1,7 @@
 ﻿using Ludiq;
 using Bolt;
 
-namespace Lasm.Bolt.UniversalSave.Editor
+namespace Lasm.Bolt.UniversalSaver.Editor
 {
     /// <summary>
     /// The visuals and visual behaviour of a SetUniversalVariable Unit.

@@ -5,16 +5,16 @@ using Ludiq;
 using Bolt;
 using Lasm.OdinSerializer;
 
-namespace Lasm.Bolt.UniversalSave
+namespace Lasm.Bolt.UniversalSaver
 {
     /// <summary>
-    /// Loads a Binary Save and returns the variables and values of it.
+    /// Loads a Universal Save and returns the variables and values of it.
     /// </summary>
     [UnitCategory("IO")]
-    [UnitTitle("Load Binary")]
-    [RenamedFrom("Lasm.BoltExtensions.IO.LoadBinaryVariables")]
-    [RenamedFrom("Lasm.BoltExtensions.LoadBinaryVariables")]
-    [RenamedFrom("Lasm.UAlive.LoadBinaryVariables")]
+    [UnitTitle("Load Universal Variables")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.LoadUniversalVariables")]
+    [RenamedFrom("Lasm.BoltExtensions.LoadUniversalVariables")]
+    [RenamedFrom("Lasm.UAlive.LoadUniversalVariables")]
     public sealed class LoadUniversalVariables : UniversalSaveUnit
     {
         /// <summary>
@@ -74,11 +74,11 @@ namespace Lasm.Bolt.UniversalSave
         {
             if (!usePersistantDataPath) path = ValueInput<string>("path", string.Empty);
             fileName = ValueInput<string>(nameof(fileName), string.Empty);
-            binary = ValueOutput<UniversalSaver>(nameof(binary));
+            binary = ValueOutput<UniversalSave>(nameof(binary));
 
             complete = ControlOutput("complete");
             load = ControlInput("load", (flow) => {
-                flow.SetValue(binary, UniversalSaver.Load((usePersistantDataPath) ? Application.persistentDataPath + "/data/" + flow.GetValue<string>(fileName) : flow.GetValue<string>(path) + "/" + flow.GetValue<string>(fileName)));
+                flow.SetValue(binary, UniversalSave.Load((usePersistantDataPath) ? Application.persistentDataPath + "/data/" + flow.GetValue<string>(fileName) : flow.GetValue<string>(path) + "/" + flow.GetValue<string>(fileName)));
                 return complete;
             });
 

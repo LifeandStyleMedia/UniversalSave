@@ -4,16 +4,16 @@ using Bolt;
 using Lasm.OdinSerializer;
 using System.IO;
 
-namespace Lasm.Bolt.UniversalSave
+namespace Lasm.Bolt.UniversalSaver
 {
     /// <summary>
-    /// A Unit that checks if a Binary Save exists in the chosen path.
+    /// A Unit that checks if a Universal Save exists in the chosen path.
     /// </summary>
     [UnitCategory("IO")]
-    [UnitTitle("Binary Exists")]
-    [RenamedFrom("Lasm.BoltExtensions.IO.BinarySaveExists")]
-    [RenamedFrom("Lasm.BoltExtensions.BinarySaveExists")]
-    [RenamedFrom("Lasm.UAlive.BinarySaveExists")]
+    [UnitTitle("Universal Exists")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.UniversalSaveExists")]
+    [RenamedFrom("Lasm.BoltExtensions.UniversalSaveExists")]
+    [RenamedFrom("Lasm.UAlive.UniversalSaveExists")]
     public sealed class UniversalSaveExists : UniversalSaveUnit
     {
         /// <summary>

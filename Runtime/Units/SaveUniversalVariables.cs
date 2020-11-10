@@ -5,16 +5,16 @@ using Ludiq;
 using Bolt;
 using Lasm.OdinSerializer;
 
-namespace Lasm.Bolt.UniversalSave
+namespace Lasm.Bolt.UniversalSaver
 {
     /// <summary>
-    /// A Unit that saves the Binary Variables to the path of your choosing.
+    /// A Unit that saves the Universal Variables to the path of your choosing.
     /// </summary>
-    [UnitTitle("Save Binary")]
+    [UnitTitle("Save Universal Variables")]
     [UnitCategory("IO")]
-    [RenamedFrom("Lasm.BoltExtensions.IO.SaveBinaryVariables")]
-    [RenamedFrom("Lasm.BoltExtensions.SaveBinaryVariables")]
-    [RenamedFrom("Lasm.UAlive.SaveBinaryVariables")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.SaveUniversalVariables")]
+    [RenamedFrom("Lasm.BoltExtensions.SaveUniversalVariables")]
+    [RenamedFrom("Lasm.UAlive.SaveUniversalVariables")]
     public sealed class SaveUniversalVariables : UniversalSaveUnit
     {
         /// <summary>
@@ -26,8 +26,8 @@ namespace Lasm.Bolt.UniversalSave
         public bool usePersistantDataPath = true;
 
         /// <summary>
-        /// Adds variables of a Binary Save or newly created variables on this Unit, 
-        /// to the current Binary Save, if they don't exist. If they do exist, the value will be overwritten.
+        /// Adds variables of a Universal Save or newly created variables on this Unit, 
+        /// to the current Universal Save, if they don't exist. If they do exist, the value will be overwritten.
         /// </summary>
         [Serialize]
         [Inspectable]
@@ -35,7 +35,7 @@ namespace Lasm.Bolt.UniversalSave
         public bool append = false;
 
         /// <summary>
-        /// Makes the saved data come from an external source, by providing an input port for a Binary Save on the unit.
+        /// Makes the saved data come from an external source, by providing an input port for a Universal Save on the unit.
         /// </summary>
         [Serialize]
         [Inspectable]
@@ -53,30 +53,30 @@ namespace Lasm.Bolt.UniversalSave
         public int count { get { return _count; } set { _count = Mathf.Clamp(value, 0, 100); } }
 
         /// <summary>
-        /// The path to the Binary Save.
+        /// The path to the Universal Save.
         /// </summary>
         [DoNotSerialize]
         public ValueInput path;
 
         /// <summary>
-        /// The filename and extension for the path of the Binary Save.
+        /// The filename and extension for the path of the Universal Save.
         /// </summary>
         [DoNotSerialize]
         public ValueInput fileName;
 
         /// <summary>
-        /// The Binary Save input port show when promoteToInputPort is true.
+        /// The Universal Save input port show when promoteToInputPort is true.
         /// </summary>
         [DoNotSerialize]
         public ValueInput binarySave;
 
         /// <summary>
-        /// The output result of the Binary Save we just saved.
+        /// The output result of the Universal Save we just saved.
         /// </summary>
         [DoNotSerialize]
         public ValueOutput binarySaveOut;
 
-        private UniversalSaver lastSave;
+        private UniversalSave lastSave;
 
         /// <summary>
         /// The name ports for the Units save variables.
@@ -106,7 +106,7 @@ namespace Lasm.Bolt.UniversalSave
         {
             values.Clear();
 
-            if (promoteToInputPort) binarySave = ValueInput<UniversalSaver>("binary");
+            if (promoteToInputPort) binarySave = ValueInput<UniversalSave>("binary");
 
             if (!usePersistantDataPath) path = ValueInput<string>("path", string.Empty);
             fileName = ValueInput<string>("fileName", string.Empty);
@@ -115,7 +115,7 @@ namespace Lasm.Bolt.UniversalSave
             DefineSaveControlPort();
             if (!promoteToInputPort) DefineVariablePorts();
 
-            binarySaveOut = ValueOutput<UniversalSaver>("_binary", GetBinaryOutput);
+            binarySaveOut = ValueOutput<UniversalSave>("_binary", GetUniversalOutput);
 
             Requirement(fileName, save);
             Succession(save, complete);
@@ -136,18 +136,18 @@ namespace Lasm.Bolt.UniversalSave
 
         private void DefineSaveControlPort()
         {
-            save = ControlInput("save", SaveBinary);
+            save = ControlInput("save", SaveUniversal);
         }
 
-        private void Save(Flow flow, UniversalSaver binary)
+        private void Save(Flow flow, UniversalSave binary)
         {
-            UniversalSaver.Save(GetPath(flow), binary);
+            UniversalSave.Save(GetPath(flow), binary);
         }
 
-        private ControlOutput SaveBinary(Flow flow)
+        private ControlOutput SaveUniversal(Flow flow)
         {
-            var binary = promoteToInputPort == true ? flow.GetValue<UniversalSaver>(binarySave) : new UniversalSaver();
-            var loadedSave = append ? UniversalSaver.Load(GetPath(flow)) : null;
+            var binary = promoteToInputPort == true ? flow.GetValue<UniversalSave>(binarySave) : new UniversalSave();
+            var loadedSave = append ? UniversalSave.Load(GetPath(flow)) : null;
 
             if (!promoteToInputPort)
             {
@@ -203,7 +203,7 @@ namespace Lasm.Bolt.UniversalSave
             return (usePersistantDataPath) ? Application.persistentDataPath + "/data/" + flow.GetValue<string>(fileName) : flow.GetValue<string>(path) + "/" + flow.GetValue<string>(fileName);
         }
 
-        private UniversalSaver GetBinaryOutput(Flow flow)
+        private UniversalSave GetUniversalOutput(Flow flow)
         {
             return lastSave;
         }

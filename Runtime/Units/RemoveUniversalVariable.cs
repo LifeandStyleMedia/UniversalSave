@@ -1,15 +1,15 @@
 ﻿using Ludiq;
 using Bolt;
 
-namespace Lasm.Bolt.UniversalSave
+namespace Lasm.Bolt.UniversalSaver
 {
     /// <summary>
-    /// A Unit that removes a variabke from a BinarySave.
+    /// A Unit that removes a variable from a UniversalSave.
     /// </summary>
     [UnitCategory("IO")]
-    [RenamedFrom("Lasm.BoltExtensions.IO.RemoveBinaryVariable")]
-    [RenamedFrom("Lasm.BoltExtensions.RemoveBinaryVariable")]
-    [RenamedFrom("Lasm.UAlive.RemoveBinaryVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.RemoveUniversalVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.RemoveUniversalVariable")]
+    [RenamedFrom("Lasm.UAlive.RemoveUniversalVariable")]
     public sealed class RemoveUniversalVariable : UniversalSaveUnit
     {
         /// <summary>
@@ -25,7 +25,7 @@ namespace Lasm.Bolt.UniversalSave
         public ControlOutput exit;
 
         /// <summary>
-        /// The Value Input port for the instance of the Binary Save we are removing the variable from.
+        /// The Value Input port for the instance of the Universal Save we are removing the variable from.
         /// </summary>
         [DoNotSerialize]
         public ValueInput binary;
@@ -40,7 +40,7 @@ namespace Lasm.Bolt.UniversalSave
         protected override void Definition()
         {
             enter = ControlInput("enter", RemoveVariable);
-            binary = ValueInput<UniversalSaver>(nameof(binary));
+            binary = ValueInput<UniversalSave>(nameof(binary));
             variableName = ValueInput<string>(nameof(variableName), string.Empty);
             exit = ControlOutput("exit");
 
@@ -51,7 +51,7 @@ namespace Lasm.Bolt.UniversalSave
 
         private ControlOutput RemoveVariable(Flow flow)
         {
-            flow.GetValue<UniversalSaver>(binary).Remove(flow.GetValue<string>(variableName));
+            flow.GetValue<UniversalSave>(binary).Remove(flow.GetValue<string>(variableName));
             return exit;
         }
     }

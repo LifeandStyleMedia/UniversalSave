@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ludiq;
 
-namespace Lasm.Bolt.UniversalSave
+namespace Lasm.Bolt.UniversalSaver
 {
     /// <summary>
-    /// A single variable that is the data type for BinarySaves to store in its internal dictionary.
+    /// A single variable that is the data type for UniversalSaves to store in its internal dictionary.
     /// </summary>
     [Inspectable]
-    [RenamedFrom("Lasm.BoltExtensions.IO.BinaryVariable")]
-    [RenamedFrom("Lasm.BoltExtensions.BinaryVariable")]
-    [RenamedFrom("Lasm.UAlive.BinaryVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.UniversalVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.UniversalVariable")]
+    [RenamedFrom("Lasm.UAlive.UniversalVariable")]
     public sealed class UniversalVariable
     {
         /// <summary>

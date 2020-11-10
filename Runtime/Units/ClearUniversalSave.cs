@@ -1,19 +1,19 @@
 ﻿using Bolt;
 using Ludiq;
 
-namespace Lasm.Bolt.UniversalSave
+namespace Lasm.Bolt.UniversalSaver
 {
     /// <summary>
-    /// Clears all variables of a Binary Save object.
+    /// Clears all variables of a Universal Save object.
     /// </summary>
-    [RenamedFrom("Lasm.BoltExtensions.IO.ClearBinarySave")]
-    [RenamedFrom("Lasm.BoltExtensions.ClearBinarySave")]
-    [RenamedFrom("Lasm.UAlive.ClearBinarySave")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.ClearUniversalSave")]
+    [RenamedFrom("Lasm.BoltExtensions.ClearUniversalSave")]
+    [RenamedFrom("Lasm.UAlive.ClearUniversalSave")]
     [UnitCategory("IO")]
     public sealed class ClearUniversalSave : UniversalSaveUnit
     {
         /// <summary>
-        /// The Control Input port to enter when we want to clear the BinarySaves variables.
+        /// The Control Input port to enter when we want to clear the UniversalSaves variables.
         /// </summary>
         [DoNotSerialize][PortLabelHidden]
         public ControlInput enter;
@@ -26,15 +26,15 @@ namespace Lasm.Bolt.UniversalSave
         public ControlOutput exit;
 
         /// <summary>
-        /// The Value Input port of the BinarySave.
+        /// The Value Input port of the UniversalSave.
         /// </summary>
         [DoNotSerialize]
         public ValueInput save;
 
         protected override void Definition()
         {
-            save = ValueInput<UniversalSaver>("save");
-            enter = ControlInput("enter", (flow) => { flow.GetValue<UniversalSaver>(save).variables.Clear(); return exit; });
+            save = ValueInput<UniversalSave>("save");
+            enter = ControlInput("enter", (flow) => { flow.GetValue<UniversalSave>(save).variables.Clear(); return exit; });
             exit = ControlOutput("exit");
 
             Succession(enter, exit);

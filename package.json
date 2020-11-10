@@ -2,7 +2,7 @@
   "name": "com.lasm.bolt.universalsave",
   "version": "1.0.0",
   "displayName": "Universal Save",
-  "description": "Custom Units for saving Binary, JSON, and XML with Odin Serializer in Bolt Visual Scripting.",
+  "description": "Custom Units for saving Binary, JSON, and Nodes with Odin Serializer in Bolt Visual Scripting.",
   "unity": "2018.4",
   "dependencies": {
     "com.lasm.dependencies": "1.0.0"

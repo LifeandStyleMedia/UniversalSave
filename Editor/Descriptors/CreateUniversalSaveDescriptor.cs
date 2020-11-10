@@ -1,10 +1,10 @@
 ﻿using Ludiq;
 using Bolt;
 
-namespace Lasm.Bolt.UniversalSave.Editor
+namespace Lasm.Bolt.UniversalSaver.Editor
 {
     /// <summary>
-    /// A descriptor for a CreateBinarySave Unit.
+    /// A descriptor for a CreateUniversalSave Unit.
     /// </summary>
     [Descriptor(typeof(CreateUniversalSave))]
     public sealed class CreateUniversalSaveDescriptor : UniversalSaveUnitDescriptor

@@ -1,10 +1,10 @@
 ﻿using Ludiq;
 using Bolt;
 
-namespace Lasm.Bolt.UniversalSave.Editor
+namespace Lasm.Bolt.UniversalSaver.Editor
 {
     /// <summary>
-    /// The visuals and visual behaviour of a RemoveBinaryVariable Unit.
+    /// The visuals and visual behaviour of a RemoveUniversalVariable Unit.
     /// </summary>
     [Widget(typeof(RemoveUniversalVariable))]
     public sealed class RemoveUniversalVariableWidget : UnitWidget<RemoveUniversalVariable>

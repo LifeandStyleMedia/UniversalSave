@@ -5,10 +5,10 @@ using Bolt;
 using UnityEngine;
 using UnityEditor;
 
-namespace Lasm.Bolt.UniversalSave.Editor
+namespace Lasm.Bolt.UniversalSaver.Editor
 {
     /// <summary>
-    /// A descriptor for a Save Binary Variable Unit.
+    /// A descriptor for a Save Universal Variable Unit.
     /// </summary>
     [Descriptor(typeof(SaveUniversalVariables))]
     public sealed class SaveUniversalVariablesDescriptor : UniversalSaveUnitDescriptor

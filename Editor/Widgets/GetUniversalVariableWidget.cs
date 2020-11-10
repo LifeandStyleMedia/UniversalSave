@@ -1,10 +1,10 @@
 ﻿using Ludiq;
 using Bolt;
 
-namespace Lasm.Bolt.UniversalSave.Editor
+namespace Lasm.Bolt.UniversalSaver.Editor
 {
     /// <summary>
-    /// The visuals and visual behaviour of a GetBinaryVariable Unit.
+    /// The visuals and visual behaviour of a GetUniversalVariable Unit.
     /// </summary>
     [Widget(typeof(GetUniversalVariable))]
     public sealed class GetUniversalVariableWidget : UnitWidget<GetUniversalVariable>

@@ -1,15 +1,15 @@
 ﻿using Ludiq;
 using Bolt;
 
-namespace Lasm.Bolt.UniversalSave
+namespace Lasm.Bolt.UniversalSaver
 {
     /// <summary>
-    /// A Unit that sets a variable value of a BinarySave instance.
+    /// A Unit that sets a variable value of a UniversalSave instance.
     /// </summary>
     [UnitCategory("IO")]
-    [RenamedFrom("Lasm.BoltExtensions.IO.SetBinaryVariable")]
-    [RenamedFrom("Lasm.BoltExtensions.SetBinaryVariable")]
-    [RenamedFrom("Lasm.UAlive.SetBinaryVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.SetUniversalVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.SetUniversalVariable")]
+    [RenamedFrom("Lasm.UAlive.SetUniversalVariable")]
     public sealed class SetUniversalVariable : UniversalSaveUnit
     {
         /// <summary>
@@ -25,7 +25,7 @@ namespace Lasm.Bolt.UniversalSave
         public ControlOutput exit;
 
         /// <summary>
-        /// The Value Input port for the instance of the Binary Save we are setting the variable on.
+        /// The Value Input port for the instance of the Universal Save we are setting the variable on.
         /// </summary>
         [DoNotSerialize]
         public ValueInput binary;
@@ -47,7 +47,7 @@ namespace Lasm.Bolt.UniversalSave
         protected override void Definition()
         {
             enter = ControlInput("enter", SetVariable);
-            binary = ValueInput<UniversalSaver>(nameof(binary));
+            binary = ValueInput<UniversalSave>(nameof(binary));
             variableName = ValueInput<string>(nameof(variableName), string.Empty);
             value = ValueInput<object>(nameof(value));
             exit = ControlOutput("exit");
@@ -61,7 +61,7 @@ namespace Lasm.Bolt.UniversalSave
 
         private ControlOutput SetVariable(Flow flow)
         {
-            flow.GetValue<UniversalSaver>(binary).Set(flow.GetValue<string>(variableName), flow.GetValue<object>(value));
+            flow.GetValue<UniversalSave>(binary).Set(flow.GetValue<string>(variableName), flow.GetValue<object>(value));
             return exit;
         }
     }

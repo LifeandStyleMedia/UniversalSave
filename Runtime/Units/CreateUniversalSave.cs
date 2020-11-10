@@ -3,16 +3,15 @@ using UnityEngine;
 using Ludiq;
 using Bolt;
 
-namespace Lasm.Bolt.UniversalSave
+namespace Lasm.Bolt.UniversalSaver
 {
     /// <summary>
-    /// A Unit for creating a new Binary Save.
+    /// A Unit for creating a new Universal Save.
     /// </summary>
-    [UnitTitle("Create Binary")]
     [UnitCategory("IO")]
-    [RenamedFrom("Lasm.BoltExtensions.IO.CreateBinarySave")]
-    [RenamedFrom("Lasm.BoltExtensions.CreateBinarySave")]
-    [RenamedFrom("Lasm.UAlive.CreateBinarySave")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.CreateUniversalSave")]
+    [RenamedFrom("Lasm.BoltExtensions.CreateUniversalSave")]
+    [RenamedFrom("Lasm.UAlive.CreateUniversalSave")]
     public sealed class CreateUniversalSave : UniversalSaveUnit
     {
         [Serialize]
@@ -26,7 +25,7 @@ namespace Lasm.Bolt.UniversalSave
         public int count { get { return _count; } set { _count = Mathf.Clamp(value, 0, 100); } }
 
         /// <summary>
-        /// The newly created BinarySave.
+        /// The newly created UniversalSave.
         /// </summary>
         [DoNotSerialize]
         public ValueOutput binarySave;
@@ -49,7 +48,7 @@ namespace Lasm.Bolt.UniversalSave
 
             DefineVariablePorts();
 
-            binarySave = ValueOutput<UniversalSaver>("_binary", GetBinaryOutput);
+            binarySave = ValueOutput<UniversalSave>("_binary", GetUniversalOutput);
         }
 
         private void DefineVariablePorts()
@@ -63,9 +62,9 @@ namespace Lasm.Bolt.UniversalSave
             }
         }
         
-        private UniversalSaver GetBinaryOutput(Flow flow)
+        private UniversalSave GetUniversalOutput(Flow flow)
         {
-            var binary = new UniversalSaver();
+            var binary = new UniversalSave();
 
             for (int i = 0; i < count; i++)
             {

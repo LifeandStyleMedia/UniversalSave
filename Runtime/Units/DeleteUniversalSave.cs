@@ -3,16 +3,16 @@ using Ludiq;
 using Bolt;
 using Lasm.OdinSerializer;
 
-namespace Lasm.Bolt.UniversalSave
+namespace Lasm.Bolt.UniversalSaver
 {
     /// <summary>
-    /// Deletes a Binary Save file from a path.
+    /// Deletes a Universal Save file from a path.
     /// </summary>
     [UnitCategory("IO")]
     [UnitTitle("Delete Save")]
-    [RenamedFrom("Lasm.BoltExtensions.IO.DeleteBinarySave")]
-    [RenamedFrom("Lasm.BoltExtensions.DeleteBinarySave")]
-    [RenamedFrom("Lasm.UAlive.IO.DeleteBinarySave")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.DeleteUniversalSave")]
+    [RenamedFrom("Lasm.BoltExtensions.DeleteUniversalSave")]
+    [RenamedFrom("Lasm.UAlive.IO.DeleteUniversalSave")]
     public class DeleteUniversalSave : UniversalSaveUnit
     {
         /// <summary>
@@ -69,7 +69,7 @@ namespace Lasm.Bolt.UniversalSave
 
             complete = ControlOutput("complete");
             delete = ControlInput("delete", (flow) => {
-                UniversalSaver.Delete((usePersistantDataPath) ? Application.persistentDataPath + "/data/" + flow.GetValue<string>(fileName) : flow.GetValue<string>(path) + "/" + flow.GetValue<string>(fileName));
+                UniversalSave.Delete((usePersistantDataPath) ? Application.persistentDataPath + "/data/" + flow.GetValue<string>(fileName) : flow.GetValue<string>(path) + "/" + flow.GetValue<string>(fileName));
                 return complete;
             });
 

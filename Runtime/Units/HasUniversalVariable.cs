@@ -4,19 +4,19 @@ using UnityEngine;
 using Bolt;
 using Ludiq;
 
-namespace Lasm.Bolt.UniversalSave
+namespace Lasm.Bolt.UniversalSaver
 {
     /// <summary>
-    /// A Unit to check if a Binary Save has a paticular variable.
+    /// A Unit to check if a Universal Save has a paticular variable.
     /// </summary>
     [UnitCategory("IO")]
-    [RenamedFrom("Lasm.BoltExtensions.IO.HasBinaryVariable")]
-    [RenamedFrom("Lasm.BoltExtensions.HasBinaryVariable")]
-    [RenamedFrom("Lasm.UAlive.HasBinaryVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.HasUniversalVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.HasUniversalVariable")]
+    [RenamedFrom("Lasm.UAlive.HasUniversalVariable")]
     public sealed class HasUniversalVariable : UniversalSaveUnit
     {
         /// <summary>
-        /// The Value Input port for the instance of the Binary Save we are checking the variable exists in.
+        /// The Value Input port for the instance of the Universal Save we are checking the variable exists in.
         /// </summary>
         [DoNotSerialize]
         public ValueInput binary;
@@ -29,7 +29,7 @@ namespace Lasm.Bolt.UniversalSave
         public ValueInput variableName;
 
         /// <summary>
-        /// Returns true if the variable exists in the Binary Save.
+        /// Returns true if the variable exists in the Universal Save.
         /// </summary>
         [DoNotSerialize]
         [PortLabelHidden]
@@ -37,7 +37,7 @@ namespace Lasm.Bolt.UniversalSave
 
         protected override void Definition()
         {
-            binary = ValueInput<UniversalSaver>(nameof(binary));
+            binary = ValueInput<UniversalSave>(nameof(binary));
             variableName = ValueInput<string>(nameof(variableName), string.Empty);
             result = ValueOutput<bool>(nameof(result), HasVariable);
 
@@ -47,7 +47,7 @@ namespace Lasm.Bolt.UniversalSave
 
         private bool HasVariable(Flow flow)
         {
-            return flow.GetValue<UniversalSaver>(binary).Has(flow.GetValue<string>(variableName));
+            return flow.GetValue<UniversalSave>(binary).Has(flow.GetValue<string>(variableName));
         }
     }
 }

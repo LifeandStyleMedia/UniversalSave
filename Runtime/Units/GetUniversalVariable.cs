@@ -4,19 +4,19 @@ using UnityEngine;
 using Ludiq;
 using Bolt;
 
-namespace Lasm.Bolt.UniversalSave
+namespace Lasm.Bolt.UniversalSaver
 {
     /// <summary>
-    /// A Unit that sets a variable value of a BinarySave instance.
+    /// A Unit that sets a variable value of a UniversalSave instance.
     /// </summary>
     [UnitCategory("IO")]
-    [RenamedFrom("Lasm.BoltExtensions.IO.GetBinaryVariable")]
-    [RenamedFrom("Lasm.BoltExtensions.GetBinaryVariable")]
-    [RenamedFrom("Lasm.UAlive.GetBinaryVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.GetUniversalVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.GetUniversalVariable")]
+    [RenamedFrom("Lasm.UAlive.GetUniversalVariable")]
     public sealed class GetUniversalVariable : UniversalSaveUnit
     {
         /// <summary>
-        /// The Value Input port for the instance of the Binary Save we are getting the variable of.
+        /// The Value Input port for the instance of the Universal Save we are getting the variable of.
         /// </summary>
         [DoNotSerialize]
         public ValueInput binary;
@@ -35,7 +35,7 @@ namespace Lasm.Bolt.UniversalSave
 
         protected override void Definition()
         {
-            binary = ValueInput<UniversalSaver>(nameof(binary));
+            binary = ValueInput<UniversalSave>(nameof(binary));
             variableName = ValueInput<string>(nameof(variableName), string.Empty);
             value = ValueOutput<object>(nameof(value), GetVariable);
 
@@ -45,7 +45,7 @@ namespace Lasm.Bolt.UniversalSave
 
         private object GetVariable(Flow flow)
         {
-            return flow.GetValue<UniversalSaver>(binary).Get(flow.GetValue<string>(variableName));
+            return flow.GetValue<UniversalSave>(binary).Get(flow.GetValue<string>(variableName));
         }
     }
 }
