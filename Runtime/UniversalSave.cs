@@ -1,8 +1,10 @@
 ﻿using Lasm.OdinSerializer;
+using System.Linq;
 using System;
 using Ludiq;
 using System.IO;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Lasm.Bolt.UniversalSaver
 {
@@ -16,6 +18,9 @@ namespace Lasm.Bolt.UniversalSaver
     [IncludeInSettings(true)][Inspectable]
     public sealed class UniversalSave
     {
+        [Inspectable]
+        public DataFormat dataFormat = DataFormat.Binary;
+
         /// <summary>
         /// All the save variables.
         /// </summary>
@@ -33,13 +38,13 @@ namespace Lasm.Bolt.UniversalSaver
         /// Load a binary save from a given path.
         /// </summary>
         /// <param name="path"></param>
-        public static UniversalSave Load(string path)
+        public static UniversalSave Load(string path, DataFormat dataFormat)
         {
             if (File.Exists(path))
             {
                 using (var fileStream = new FileStream(path, FileMode.Open))
                 {
-                    return SerializationUtility.DeserializeValue<UniversalSave>(SerializationUtility.CreateReader(fileStream, new DeserializationContext(), DataFormat.Binary));
+                    return SerializationUtility.DeserializeValue<UniversalSave>(SerializationUtility.CreateReader(fileStream, new DeserializationContext(), dataFormat));
                 }
             }
 
@@ -49,11 +54,12 @@ namespace Lasm.Bolt.UniversalSaver
         /// <summary>
         /// Save a binary save to a file path.
         /// </summary>
-        public static void Save(string path, UniversalSave binary)
+        public static void Save(string path, UniversalSave universalSave)
         {
             string filelessPath = string.Empty;
 
-            if (path.Contains("/")) {
+            if (path.Contains("/"))
+            {
                 filelessPath = path.Remove(path.LastIndexOf("/"));
             }
             else
@@ -65,8 +71,13 @@ namespace Lasm.Bolt.UniversalSaver
 
             using (var fileStream = new FileStream(path, FileMode.Create))
             {
-                SerializationUtility.SerializeValue<UniversalSave>(binary, SerializationUtility.CreateWriter(fileStream, new SerializationContext(), DataFormat.Binary));
+                SerializationUtility.SerializeValue<UniversalSave>(universalSave, SerializationUtility.CreateWriter(fileStream, new SerializationContext(), universalSave.dataFormat));
             }
+        }
+
+        public static byte[] GetBytes(UniversalSave universalSave)
+        {
+            return SerializationUtility.SerializeValue<UniversalSave>(universalSave, universalSave.dataFormat);
         }
 
         /// <summary>

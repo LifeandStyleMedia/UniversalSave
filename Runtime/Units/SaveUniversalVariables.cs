@@ -17,6 +17,11 @@ namespace Lasm.Bolt.UniversalSaver
     [RenamedFrom("Lasm.UAlive.SaveUniversalVariables")]
     public sealed class SaveUniversalVariables : UniversalSaveUnit
     {
+        [Inspectable]
+        [UnitHeaderInspectable]
+        [Serialize]
+        public DataFormat format = DataFormat.Binary;
+
         /// <summary>
         /// Uses the OS application path (Persistant Data Path) if true.
         /// </summary>
@@ -147,7 +152,7 @@ namespace Lasm.Bolt.UniversalSaver
         private ControlOutput SaveUniversal(Flow flow)
         {
             var binary = promoteToInputPort == true ? flow.GetValue<UniversalSave>(binarySave) : new UniversalSave();
-            var loadedSave = append ? UniversalSave.Load(GetPath(flow)) : null;
+            var loadedSave = append ? UniversalSave.Load(GetPath(flow), format) : null;
 
             if (!promoteToInputPort)
             {

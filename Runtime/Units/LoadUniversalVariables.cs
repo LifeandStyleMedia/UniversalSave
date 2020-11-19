@@ -17,6 +17,11 @@ namespace Lasm.Bolt.UniversalSaver
     [RenamedFrom("Lasm.UAlive.LoadUniversalVariables")]
     public sealed class LoadUniversalVariables : UniversalSaveUnit
     {
+        [Inspectable]
+        [UnitHeaderInspectable]
+        [Serialize]
+        public DataFormat format = DataFormat.Binary;
+
         /// <summary>
         /// Uses the OS application path (Persistant Data Path) if true.
         /// </summary>
@@ -78,7 +83,7 @@ namespace Lasm.Bolt.UniversalSaver
 
             complete = ControlOutput("complete");
             load = ControlInput("load", (flow) => {
-                flow.SetValue(binary, UniversalSave.Load((usePersistantDataPath) ? Application.persistentDataPath + "/data/" + flow.GetValue<string>(fileName) : flow.GetValue<string>(path) + "/" + flow.GetValue<string>(fileName)));
+                flow.SetValue(binary, UniversalSave.Load((usePersistantDataPath) ? Application.persistentDataPath + "/data/" + flow.GetValue<string>(fileName) : flow.GetValue<string>(path) + "/" + flow.GetValue<string>(fileName), format));
                 return complete;
             });
 
