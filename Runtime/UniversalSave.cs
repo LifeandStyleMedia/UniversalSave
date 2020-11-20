@@ -27,6 +27,7 @@ namespace Lasm.Bolt.UniversalSaver
         [RenamedFrom("Lasm.BoltExtensions.IO.BinarySave.saves")]
         [RenamedFrom("Lasm.UAlive.BinarySave.saves")]
         [Inspectable][InspectorWide]
+        [Serialize]
         public Dictionary<string, object> variables = new Dictionary<string, object>();
 
         /// <summary>
@@ -38,7 +39,7 @@ namespace Lasm.Bolt.UniversalSaver
         /// Load a binary save from a given path.
         /// </summary>
         /// <param name="path"></param>
-        public static UniversalSave Load(string path, DataFormat dataFormat)
+        internal static UniversalSave Load(string path, DataFormat dataFormat)
         {
             if (File.Exists(path))
             {
@@ -54,7 +55,7 @@ namespace Lasm.Bolt.UniversalSaver
         /// <summary>
         /// Save a binary save to a file path.
         /// </summary>
-        public static void Save(string path, UniversalSave universalSave)
+        internal static void Save(string path, UniversalSave universalSave)
         {
             string filelessPath = string.Empty;
 
@@ -88,7 +89,7 @@ namespace Lasm.Bolt.UniversalSaver
         /// <summary>
         /// Deletes a file if it exists.
         /// </summary>
-        public static void Delete(string path)
+        internal static void Delete(string path)
         {
             if (File.Exists(path)) File.Delete(path);
         }
@@ -97,7 +98,7 @@ namespace Lasm.Bolt.UniversalSaver
         /// <summary>
         /// Get a variable from this Universal Save.
         /// </summary>
-        public object Get(string name)
+        internal object Get(string name)
         {
             return variables[name];
         }
@@ -105,7 +106,7 @@ namespace Lasm.Bolt.UniversalSaver
         /// <summary>
         /// Checks if this Universal Save has a variable.
         /// </summary>
-        public bool Has(string name)
+        internal bool Has(string name)
         {
             return variables.ContainsKey(name);
         }
@@ -113,7 +114,7 @@ namespace Lasm.Bolt.UniversalSaver
         /// <summary>
         /// Removes a variable from the Universal Save.
         /// </summary>
-        public void Remove(string name)
+        internal void Remove(string name)
         {
             variables.Remove(name);
         }
@@ -121,7 +122,7 @@ namespace Lasm.Bolt.UniversalSaver
         /// <summary>
         /// Sets a value of a Universal Save variable.
         /// </summary>
-        public void Set(string name, object value)
+        internal void Set(string name, object value)
         {
             if (variables.ContainsKey(name))
             {
