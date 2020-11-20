@@ -18,7 +18,6 @@ namespace Lasm.Bolt.UniversalSaver
     public sealed class SaveUniversalVariables : UniversalSaveUnit
     {
         [Inspectable]
-        [UnitHeaderInspectable]
         [Serialize]
         public DataFormat format = DataFormat.Binary;
 
@@ -54,7 +53,6 @@ namespace Lasm.Bolt.UniversalSaver
         /// The amount of variables to create when saving.
         /// </summary>
         [Inspectable]
-        [UnitHeaderInspectable("Count")]
         public int count { get { return _count; } set { _count = Mathf.Clamp(value, 0, 100); } }
 
         /// <summary>

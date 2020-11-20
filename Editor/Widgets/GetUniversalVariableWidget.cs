@@ -1,5 +1,6 @@
 ﻿using Ludiq;
 using Bolt;
+using UnityEditor;
 
 namespace Lasm.Bolt.UniversalSaver.Editor
 {
