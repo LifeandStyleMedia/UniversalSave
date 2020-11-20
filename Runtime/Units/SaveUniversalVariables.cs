@@ -151,7 +151,7 @@ namespace Lasm.Bolt.UniversalSaver
 
         private ControlOutput SaveUniversal(Flow flow)
         {
-            var binary = promoteToInputPort == true ? flow.GetValue<UniversalSave>(binarySave) : new UniversalSave();
+            var binary = promoteToInputPort == true ? flow.GetValue<UniversalSave>(binarySave) : new UniversalSave() { dataFormat = format };
             var loadedSave = append ? UniversalSave.Load(GetPath(flow), format) : null;
 
             if (!promoteToInputPort)

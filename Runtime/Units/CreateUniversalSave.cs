@@ -2,6 +2,7 @@
 using UnityEngine;
 using Ludiq;
 using Bolt;
+using Lasm.OdinSerializer;
 
 namespace Lasm.Bolt.UniversalSaver
 {
@@ -14,6 +15,11 @@ namespace Lasm.Bolt.UniversalSaver
     [RenamedFrom("Lasm.UAlive.CreateUniversalSave")]
     public sealed class CreateUniversalSave : UniversalSaveUnit
     {
+        [Inspectable]
+        [UnitHeaderInspectable]
+        [Serialize]
+        public DataFormat format = DataFormat.Binary;
+
         [Serialize]
         private int _count;
 
@@ -65,6 +71,7 @@ namespace Lasm.Bolt.UniversalSaver
         private UniversalSave GetUniversalOutput(Flow flow)
         {
             var binary = new UniversalSave();
+            binary.dataFormat = format;
 
             for (int i = 0; i < count; i++)
             {
