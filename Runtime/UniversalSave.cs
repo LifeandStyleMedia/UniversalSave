@@ -80,6 +80,11 @@ namespace Lasm.Bolt.UniversalSaver
             return SerializationUtility.SerializeValue<UniversalSave>(universalSave, universalSave.dataFormat);
         }
 
+        public static UniversalSave FromBytes(byte[] bytes, DataFormat format)
+        {
+            return SerializationUtility.DeserializeValue<UniversalSave>(bytes, format);
+        }
+
         /// <summary>
         /// Deletes a file if it exists.
         /// </summary>
