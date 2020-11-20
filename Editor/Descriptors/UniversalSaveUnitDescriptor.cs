@@ -20,13 +20,13 @@ namespace Lasm.Bolt.UniversalSaver.Editor
 
         protected override EditorTexture DefinedIcon()
         {
-            if (tex == null) tex = EditorTexture.Single(Images.Load("UniversalSave", "universal_save", "universal_save_root"));
+            if (tex == null) tex = EditorTexture.Single(Images.Load("UniversalSave", "universal_save", "universal_save_editor_root"));
             return tex;
         }
 
         protected override EditorTexture DefaultIcon()
         {
-            if (tex == null) tex = EditorTexture.Single(Images.Load("UniversalSave", "universal_save", "universal_save_root"));
+            if (tex == null) tex = EditorTexture.Single(Images.Load("UniversalSave", "universal_save", "universal_save_editor_root"));
             return tex;
         }
     }
