@@ -10,9 +10,9 @@ namespace Lasm.Bolt.UniversalSaver
     /// A Unit for creating a new Universal Save.
     /// </summary>
     [UnitCategory("IO")]
-    [RenamedFrom("Lasm.BoltExtensions.IO.CreateUniversalSave")]
-    [RenamedFrom("Lasm.BoltExtensions.CreateUniversalSave")]
-    [RenamedFrom("Lasm.UAlive.CreateUniversalSave")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.CreateBinarySave")]
+    [RenamedFrom("Lasm.BoltExtensions.CreateBinarySave")]
+    [RenamedFrom("Lasm.UAlive.CreateBinarySave")]
     public sealed class CreateUniversalSave : UniversalSaveUnit
     {
         [Inspectable]

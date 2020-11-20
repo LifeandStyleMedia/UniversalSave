@@ -10,9 +10,9 @@ namespace Lasm.Bolt.UniversalSaver
     /// A Unit to check if a Universal Save has a paticular variable.
     /// </summary>
     [UnitCategory("IO")]
-    [RenamedFrom("Lasm.BoltExtensions.IO.HasUniversalVariable")]
-    [RenamedFrom("Lasm.BoltExtensions.HasUniversalVariable")]
-    [RenamedFrom("Lasm.UAlive.HasUniversalVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.HasBinaryVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.HasBinaryVariable")]
+    [RenamedFrom("Lasm.UAlive.HasBinaryVariable")]
     public sealed class HasUniversalVariable : UniversalSaveUnit
     {
         /// <summary>

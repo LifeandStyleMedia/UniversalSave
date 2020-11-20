@@ -7,9 +7,9 @@ namespace Lasm.Bolt.UniversalSaver
     /// A Unit that removes a variable from a UniversalSave.
     /// </summary>
     [UnitCategory("IO")]
-    [RenamedFrom("Lasm.BoltExtensions.IO.RemoveUniversalVariable")]
-    [RenamedFrom("Lasm.BoltExtensions.RemoveUniversalVariable")]
-    [RenamedFrom("Lasm.UAlive.RemoveUniversalVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.RemoveBinaryVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.RemoveBinaryVariable")]
+    [RenamedFrom("Lasm.UAlive.RemoveBinaryVariable")]
     public sealed class RemoveUniversalVariable : UniversalSaveUnit
     {
         /// <summary>

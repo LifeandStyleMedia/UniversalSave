@@ -9,9 +9,9 @@ namespace Lasm.Bolt.UniversalSaver
     /// A single variable that is the data type for UniversalSaves to store in its internal dictionary.
     /// </summary>
     [Inspectable]
-    [RenamedFrom("Lasm.BoltExtensions.IO.UniversalVariable")]
-    [RenamedFrom("Lasm.BoltExtensions.UniversalVariable")]
-    [RenamedFrom("Lasm.UAlive.UniversalVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.BinaryVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.BinaryVariable")]
+    [RenamedFrom("Lasm.UAlive.BinaryVariable")]
     public sealed class UniversalVariable
     {
         /// <summary>

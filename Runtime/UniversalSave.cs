@@ -12,9 +12,9 @@ namespace Lasm.Bolt.UniversalSaver
     /// The underlying type of the Universal Save system. This is the type that will be saved and loaded with all the data you assigned.
     /// </summary>
     [Serializable]
-    [RenamedFrom("Lasm.BoltExtensions.IO.UniversalSave")]
-    [RenamedFrom("Lasm.BoltExtensions.UniversalSave")]
-    [RenamedFrom("Lasm.UAlive.UniversalSave")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.BinarySave")]
+    [RenamedFrom("Lasm.BoltExtensions.BinarySave")]
+    [RenamedFrom("Lasm.UAlive.BinarySave")]
     [IncludeInSettings(true)][Inspectable]
     public sealed class UniversalSave
     {
@@ -24,8 +24,8 @@ namespace Lasm.Bolt.UniversalSaver
         /// <summary>
         /// All the save variables.
         /// </summary>
-        [RenamedFrom("Lasm.BoltExtensions.IO.UniversalSave.saves")]
-        [RenamedFrom("Lasm.UAlive.UniversalSave.saves")]
+        [RenamedFrom("Lasm.BoltExtensions.IO.BinarySave.saves")]
+        [RenamedFrom("Lasm.UAlive.BinarySave.saves")]
         [Inspectable][InspectorWide]
         public Dictionary<string, object> variables = new Dictionary<string, object>();
 

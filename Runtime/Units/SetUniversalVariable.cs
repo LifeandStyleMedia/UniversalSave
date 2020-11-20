@@ -7,9 +7,9 @@ namespace Lasm.Bolt.UniversalSaver
     /// A Unit that sets a variable value of a UniversalSave instance.
     /// </summary>
     [UnitCategory("IO")]
-    [RenamedFrom("Lasm.BoltExtensions.IO.SetUniversalVariable")]
-    [RenamedFrom("Lasm.BoltExtensions.SetUniversalVariable")]
-    [RenamedFrom("Lasm.UAlive.SetUniversalVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.SetBinaryVariable")]
+    [RenamedFrom("Lasm.BoltExtensions.SetBinaryVariable")]
+    [RenamedFrom("Lasm.UAlive.SetBinaryVariable")]
     public sealed class SetUniversalVariable : UniversalSaveUnit
     {
         /// <summary>

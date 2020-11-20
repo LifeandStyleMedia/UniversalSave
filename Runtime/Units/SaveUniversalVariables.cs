@@ -12,9 +12,9 @@ namespace Lasm.Bolt.UniversalSaver
     /// </summary>
     [UnitTitle("Save Universal Variables")]
     [UnitCategory("IO")]
-    [RenamedFrom("Lasm.BoltExtensions.IO.SaveUniversalVariables")]
-    [RenamedFrom("Lasm.BoltExtensions.SaveUniversalVariables")]
-    [RenamedFrom("Lasm.UAlive.SaveUniversalVariables")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.SaveBinaryVariables")]
+    [RenamedFrom("Lasm.BoltExtensions.SaveBinaryVariables")]
+    [RenamedFrom("Lasm.UAlive.SaveBinaryVariables")]
     public sealed class SaveUniversalVariables : UniversalSaveUnit
     {
         [Inspectable]

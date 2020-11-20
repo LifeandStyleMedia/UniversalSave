@@ -10,9 +10,9 @@ namespace Lasm.Bolt.UniversalSaver
     /// </summary>
     [UnitCategory("IO")]
     [UnitTitle("Delete Save")]
-    [RenamedFrom("Lasm.BoltExtensions.IO.DeleteUniversalSave")]
-    [RenamedFrom("Lasm.BoltExtensions.DeleteUniversalSave")]
-    [RenamedFrom("Lasm.UAlive.IO.DeleteUniversalSave")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.DeleteBinarySave")]
+    [RenamedFrom("Lasm.BoltExtensions.DeleteBinarySave")]
+    [RenamedFrom("Lasm.UAlive.IO.DeleteBinarySave")]
     public class DeleteUniversalSave : UniversalSaveUnit
     {
         /// <summary>

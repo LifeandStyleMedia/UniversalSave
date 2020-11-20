@@ -6,9 +6,9 @@ namespace Lasm.Bolt.UniversalSaver
     /// <summary>
     /// Clears all variables of a Universal Save object.
     /// </summary>
-    [RenamedFrom("Lasm.BoltExtensions.IO.ClearUniversalSave")]
-    [RenamedFrom("Lasm.BoltExtensions.ClearUniversalSave")]
-    [RenamedFrom("Lasm.UAlive.ClearUniversalSave")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.ClearBinarySave")]
+    [RenamedFrom("Lasm.BoltExtensions.ClearBinarySave")]
+    [RenamedFrom("Lasm.UAlive.ClearBinarySave")]
     [UnitCategory("IO")]
     public sealed class ClearUniversalSave : UniversalSaveUnit
     {

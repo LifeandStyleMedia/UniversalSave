@@ -11,9 +11,9 @@ namespace Lasm.Bolt.UniversalSaver
     /// </summary>
     [UnitCategory("IO")]
     [UnitTitle("Universal Exists")]
-    [RenamedFrom("Lasm.BoltExtensions.IO.UniversalSaveExists")]
-    [RenamedFrom("Lasm.BoltExtensions.UniversalSaveExists")]
-    [RenamedFrom("Lasm.UAlive.UniversalSaveExists")]
+    [RenamedFrom("Lasm.BoltExtensions.IO.BinarySaveExists")]
+    [RenamedFrom("Lasm.BoltExtensions.BinarySaveExists")]
+    [RenamedFrom("Lasm.UAlive.BinarySaveExists")]
     public sealed class UniversalSaveExists : UniversalSaveUnit
     {
         /// <summary>
