@@ -19,7 +19,13 @@ namespace Lasm.Bolt.UniversalSaver.Editor
             {
                 LudiqGUI.Inspector(metadata["format"], position.Add().X(42).Add().Y(22).Set().Width(60).Set().Height(20), GUIContent.none);
                 GUI.Label(position.Add().X(42).Add().Y(42).Set().Width(40).Set().Height(20), "Count");
+
+                Inspector.BeginBlock(metadata, position, GUIContent.none);
                 LudiqGUI.Inspector(metadata["count"], position.Add().X(84).Add().Y(42).Set().Width(40).Set().Height(20), GUIContent.none);
+                if (Inspector.EndBlock(metadata))
+                {
+                    unit.Define();
+                }
             }
         }
 
