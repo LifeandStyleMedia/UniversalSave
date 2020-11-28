@@ -1,7 +1,7 @@
 ﻿using Ludiq;
 using Bolt;
 using UnityEngine;
-using Lasm.Dependencies.Humility;
+using Lasm.Continuum.Humility;
 
 namespace Lasm.Bolt.UniversalSaver.Editor
 {

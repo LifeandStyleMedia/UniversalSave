@@ -1,4 +1,4 @@
-﻿using Lasm.OdinSerializer;
+﻿using Lasm.Continuum.OdinSerializer;
 using System.Linq;
 using System;
 using Ludiq;

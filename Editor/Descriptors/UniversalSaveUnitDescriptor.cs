@@ -2,7 +2,7 @@
 using Bolt;
 using UnityEngine;
 using System.Collections.Generic;
-using Lasm.Dependencies.Utilities;
+using Lasm.Continuum.Utilities;
 
 namespace Lasm.Bolt.UniversalSaver.Editor
 {
