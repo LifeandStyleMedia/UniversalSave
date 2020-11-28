@@ -24,7 +24,7 @@ namespace Lasm.Bolt.UniversalSaver
         [InspectorToggleLeft]
         public bool usePersistantDataPath = true;
 
-        [OdinSerialize]
+        [Serialize]
         private bool isInit;
 
         /// <summary>
