@@ -1,0 +1,3 @@
+<linker>
+       <assembly fullname="Lasm.Bolt.UniversalSaver.OdinSerializer" preserve="all"/>
+</linker>

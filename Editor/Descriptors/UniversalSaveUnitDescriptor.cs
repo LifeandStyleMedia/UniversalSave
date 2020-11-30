@@ -1,8 +1,5 @@
 ﻿using Ludiq;
 using Bolt;
-using UnityEngine;
-using System.Collections.Generic;
-using Lasm.Continuum.Utilities;
 
 namespace Lasm.Bolt.UniversalSaver.Editor
 {
@@ -20,13 +17,13 @@ namespace Lasm.Bolt.UniversalSaver.Editor
 
         protected override EditorTexture DefinedIcon()
         {
-            if (tex == null) tex = EditorTexture.Single(Images.Load("UniversalSave", "universal_save", "universal_save_editor_root"));
+            if (tex == null) tex = EditorTexture.Single(IconUtilities.Load("UniversalSave", "universal_save", "universal_save_editor_root"));
             return tex;
         }
 
         protected override EditorTexture DefaultIcon()
         {
-            if (tex == null) tex = EditorTexture.Single(Images.Load("UniversalSave", "universal_save", "universal_save_editor_root"));
+            if (tex == null) tex = EditorTexture.Single(IconUtilities.Load("UniversalSave", "universal_save", "universal_save_editor_root"));
             return tex;
         }
     }

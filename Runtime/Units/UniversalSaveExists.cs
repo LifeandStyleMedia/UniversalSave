@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using Ludiq;
 using Bolt;
-using Lasm.Continuum.OdinSerializer;
 using System.IO;
 
 namespace Lasm.Bolt.UniversalSaver

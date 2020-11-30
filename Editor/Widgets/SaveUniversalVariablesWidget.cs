@@ -1,7 +1,6 @@
 ﻿using Ludiq;
 using Bolt;
 using UnityEngine;
-using Lasm.Continuum.Humility;
 
 namespace Lasm.Bolt.UniversalSaver.Editor
 {
@@ -17,11 +16,29 @@ namespace Lasm.Bolt.UniversalSaver.Editor
         {
             if (!unit.promoteToInputPort)
             {
-                LudiqGUI.Inspector(metadata["format"], position.Add().X(42).Add().Y(22).Set().Width(60).Set().Height(20), GUIContent.none);
-                GUI.Label(position.Add().X(42).Add().Y(42).Set().Width(40).Set().Height(20), "Count");
+                var formatRect = position;
+                formatRect.x += 42;
+                formatRect.y += 22;
+                formatRect.width = 60;
+                formatRect.height = 20;
+
+                var countLabelRect = position;
+                countLabelRect.x += 42;
+                countLabelRect.y += 42;
+                countLabelRect.width = 40;
+                countLabelRect.height = 20;
+
+                var countRect = position;
+                countRect.x += 84;
+                countRect.y += 42;
+                countRect.width = 40;
+                countRect.height = 20;
+
+                LudiqGUI.Inspector(metadata["format"], formatRect, GUIContent.none);
+                GUI.Label(countLabelRect, "Count");
 
                 Inspector.BeginBlock(metadata, position, GUIContent.none);
-                LudiqGUI.Inspector(metadata["count"], position.Add().X(84).Add().Y(42).Set().Width(40).Set().Height(20), GUIContent.none);
+                LudiqGUI.Inspector(metadata["count"], countRect, GUIContent.none);
                 if (Inspector.EndBlock(metadata))
                 {
                     unit.Define();
