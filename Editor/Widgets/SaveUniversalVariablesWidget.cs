@@ -1,5 +1,4 @@
-﻿using Ludiq;
-using Bolt;
+﻿using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Lasm.Bolt.UniversalSaver.Editor
@@ -37,7 +36,7 @@ namespace Lasm.Bolt.UniversalSaver.Editor
                 LudiqGUI.Inspector(metadata["format"], formatRect, GUIContent.none);
                 GUI.Label(countLabelRect, "Count");
 
-                Inspector.BeginBlock(metadata, position, GUIContent.none);
+                Inspector.BeginBlock(metadata, position);
                 LudiqGUI.Inspector(metadata["count"], countRect, GUIContent.none);
                 if (Inspector.EndBlock(metadata))
                 {
