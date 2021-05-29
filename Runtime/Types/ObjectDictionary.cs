@@ -9,9 +9,6 @@ namespace Lasm.Bolt.UniversalSaver
     /// </summary>
     [Serializable][Inspectable]
     [IncludeInSettings(true)]
-    [RenamedFrom("Lasm.BoltExtensions.IO.ObjectDictionary")]
-    [RenamedFrom("Lasm.BoltExtensions.ObjectDictionary")]
-    [RenamedFrom("Lasm.UAlive.ObjectDictionary")]
     public sealed class ObjectDictionary : Dictionary<object, object> { }
 }
 
