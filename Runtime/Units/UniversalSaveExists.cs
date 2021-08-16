@@ -88,7 +88,7 @@ namespace Lasm.Bolt.UniversalSaver
         /// </summary>>
         public ControlOutput SaveExists(Flow flow)
         {
-            if (File.Exists((usePersistantDataPath) ? Application.persistentDataPath + "/data/" + flow.GetValue<string>(fileName) : flow.GetValue<string>(path) + "/" + flow.GetValue<string>(fileName)))
+            if (File.Exists((usePersistantDataPath) ? Application.persistentDataPath + "/" + flow.GetValue<string>(fileName) : flow.GetValue<string>(path) + "/" + flow.GetValue<string>(fileName)))
             {
                 return @true;
             }

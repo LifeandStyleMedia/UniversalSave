@@ -68,7 +68,7 @@ namespace Lasm.Bolt.UniversalSaver
 
             complete = ControlOutput("complete");
             delete = ControlInput("delete", (flow) => {
-                UniversalSave.Delete((usePersistantDataPath) ? Application.persistentDataPath + "/data/" + flow.GetValue<string>(fileName) : flow.GetValue<string>(path) + "/" + flow.GetValue<string>(fileName));
+                UniversalSave.Delete((usePersistantDataPath) ? Application.persistentDataPath + "/" + flow.GetValue<string>(fileName) : flow.GetValue<string>(path) + "/" + flow.GetValue<string>(fileName));
                 return complete;
             });
 
