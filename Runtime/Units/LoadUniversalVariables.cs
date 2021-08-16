@@ -82,7 +82,7 @@ namespace Lasm.Bolt.UniversalSaver
 
             complete = ControlOutput("complete");
             load = ControlInput("load", (flow) => {
-                flow.SetValue(binary, UniversalSave.Load((usePersistantDataPath) ? Application.persistentDataPath + "/data/" + flow.GetValue<string>(fileName) : flow.GetValue<string>(path) + "/" + flow.GetValue<string>(fileName), format));
+                flow.SetValue(binary, UniversalSave.Load((usePersistantDataPath) ? Application.persistentDataPath + "/" + flow.GetValue<string>(fileName) : flow.GetValue<string>(path) + "/" + flow.GetValue<string>(fileName), format));
                 return complete;
             });
 

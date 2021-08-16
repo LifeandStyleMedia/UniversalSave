@@ -201,7 +201,7 @@ namespace Lasm.Bolt.UniversalSaver
 
         private string GetPath(Flow flow)
         {
-            return (usePersistantDataPath) ? Application.persistentDataPath + "/data/" + flow.GetValue<string>(fileName) : flow.GetValue<string>(path) + "/" + flow.GetValue<string>(fileName);
+            return (usePersistantDataPath) ? Application.persistentDataPath + "/" + flow.GetValue<string>(fileName) : flow.GetValue<string>(path) + "/" + flow.GetValue<string>(fileName);
         }
 
         private UniversalSave GetUniversalOutput(Flow flow)
