@@ -3,6 +3,7 @@ using System;
 using Unity.VisualScripting;
 using System.IO;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Lasm.Bolt.UniversalSaver
 {
@@ -17,6 +18,7 @@ namespace Lasm.Bolt.UniversalSaver
     public sealed class UniversalSave
     {
         [Inspectable]
+        [Serialize]
         public DataFormat dataFormat = DataFormat.Binary;
 
         /// <summary>
@@ -43,7 +45,19 @@ namespace Lasm.Bolt.UniversalSaver
             {
                 using (var fileStream = new FileStream(path, FileMode.Open))
                 {
-                    return SerializationUtility.DeserializeValue<UniversalSave>(SerializationUtility.CreateReader(fileStream, new DeserializationContext(), dataFormat));
+                    var dictionary = SerializationUtility.DeserializeValue<Dictionary<string, object>>(SerializationUtility.CreateReader(fileStream, new DeserializationContext(), dataFormat));
+                    if (dictionary == null)
+                    {
+                        var universalSave = SerializationUtility.DeserializeValue<UniversalSave>(SerializationUtility.CreateReader(fileStream, new DeserializationContext(), dataFormat));
+                        if (universalSave != null)
+                        {
+                            return universalSave;
+                        }
+                    }
+                    else
+                    {
+                        return new UniversalSave() { variables = dictionary };
+                    }
                 }
             }
 
@@ -70,7 +84,7 @@ namespace Lasm.Bolt.UniversalSaver
 
             using (var fileStream = new FileStream(path, FileMode.Create))
             {
-                SerializationUtility.SerializeValue<UniversalSave>(universalSave, SerializationUtility.CreateWriter(fileStream, new SerializationContext(), universalSave.dataFormat));
+                SerializationUtility.SerializeValue<Dictionary<string, object>>(universalSave.variables, SerializationUtility.CreateWriter(fileStream, new SerializationContext(), universalSave.dataFormat));
             }
         }
 
