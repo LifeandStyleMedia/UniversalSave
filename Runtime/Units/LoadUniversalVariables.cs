@@ -48,6 +48,7 @@ namespace Lasm.Bolt.UniversalSaver
         /// The Value Output port of the 
         /// </summary>
         [DoNotSerialize]
+        [PortLabel("Save")]
         public ValueOutput binary;
 
         /// <summary>

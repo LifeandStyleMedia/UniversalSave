@@ -33,6 +33,7 @@ namespace Lasm.Bolt.UniversalSaver
         /// The newly created UniversalSave.
         /// </summary>
         [DoNotSerialize]
+        [PortLabel("Save")]
         public ValueOutput binarySave;
 
         /// <summary>

@@ -27,6 +27,7 @@ namespace Lasm.Bolt.UniversalSaver
         /// The Value Input port for the instance of the Universal Save we are removing the variable from.
         /// </summary>
         [DoNotSerialize]
+        [PortLabel("Save")]
         public ValueInput binary;
 
         /// <summary>

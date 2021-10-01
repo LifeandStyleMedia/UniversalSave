@@ -69,6 +69,7 @@ namespace Lasm.Bolt.UniversalSaver
         /// The Universal Save input port show when promoteToInputPort is true.
         /// </summary>
         [DoNotSerialize]
+        [PortLabel("Save")]
         public ValueInput binarySave;
 
         /// <summary>

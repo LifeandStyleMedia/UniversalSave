@@ -18,6 +18,7 @@ namespace Lasm.Bolt.UniversalSaver
         /// The Value Input port for the instance of the Universal Save we are checking the variable exists in.
         /// </summary>
         [DoNotSerialize]
+        [PortLabel("Save")]
         public ValueInput binary;
 
         /// <summary>
