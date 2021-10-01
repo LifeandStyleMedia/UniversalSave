@@ -43,21 +43,27 @@ namespace Lasm.Bolt.UniversalSaver
         {
             if (File.Exists(path))
             {
+                Dictionary<string, object> dictionary = null;
+                UniversalSave universalSave = null;
+
                 using (var fileStream = new FileStream(path, FileMode.Open))
                 {
-                    var dictionary = SerializationUtility.DeserializeValue<Dictionary<string, object>>(SerializationUtility.CreateReader(fileStream, new DeserializationContext(), dataFormat));
-                    if (dictionary == null)
-                    {
-                        var universalSave = SerializationUtility.DeserializeValue<UniversalSave>(SerializationUtility.CreateReader(fileStream, new DeserializationContext(), dataFormat));
-                        if (universalSave != null)
-                        {
-                            return universalSave;
-                        }
-                    }
-                    else
-                    {
-                        return new UniversalSave() { variables = dictionary };
-                    }
+                    dictionary = SerializationUtility.DeserializeValue<Dictionary<string, object>>(SerializationUtility.CreateReader(fileStream, new DeserializationContext(), dataFormat));
+                }
+
+                if (dictionary != null)
+                {
+                    return new UniversalSave() { variables = dictionary };
+                }
+
+                using (var fileStream = new FileStream(path, FileMode.Open))
+                {
+                    universalSave = SerializationUtility.DeserializeValue<UniversalSave>(SerializationUtility.CreateReader(fileStream, new DeserializationContext(), dataFormat));
+                }
+
+                if (universalSave != null)
+                {
+                    return universalSave;
                 }
             }
 
